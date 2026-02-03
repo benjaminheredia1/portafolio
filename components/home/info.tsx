@@ -1,6 +1,5 @@
 import { StickyScroll } from "../ui/sticky-scroll-reveal";
 import Image from "next/image";
-import Video from "next/video";
 export function InfoGeneral() { 
     return (
         <>
