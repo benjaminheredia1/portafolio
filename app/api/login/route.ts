@@ -1,16 +1,10 @@
 "use server";
 import { NextResponse } from "next/server";
-import { PrismaClient } from "@/lib/generated/prisma/client";
-import { PrismaPg } from "@prisma/adapter-pg";
-import pg from "pg";
+import { prisma } from "@/lib/prisma";
 import bcrypt from "bcrypt";
 import { SignJWT } from "jose";
 
 export async function POST(request: Request) {
-  const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL });
-  const adapter = new PrismaPg(pool);
-  const prismaclient = new PrismaClient({ adapter });
-
   const body = await request.json();
   if (!body.email.trim() || !body.password.trim()) {
     return NextResponse.json(
@@ -20,23 +14,24 @@ export async function POST(request: Request) {
   }
 
   try {
-    const password = await bcrypt.hash(body.password, 10);
-    console.log(password);
-    const response = await prismaclient.user.findFirst({
+    const response = await prisma.user.findFirst({
       where: {
         email: body.email,
       },
     });
+
     if (!response) {
       return NextResponse.json(
         { message: "Credenciales inválidas" },
         { status: 401 },
       );
     }
+
     const passwordMatch = await bcrypt.compare(
       body.password,
       response.password,
     );
+
     if (!passwordMatch) {
       return NextResponse.json(
         { message: "Credenciales inválidas" },
@@ -54,6 +49,7 @@ export async function POST(request: Request) {
       { message: "Inicio de sesión exitoso" },
       { status: 200 },
     );
+
     response_token.cookies.set("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
@@ -61,14 +57,13 @@ export async function POST(request: Request) {
       maxAge: 60 * 60 * 24 * 2,
       path: "/",
     });
+
     return response_token;
   } catch (error) {
-    console.error("Prisma error:", error);
+    console.error("Login error:", error);
     return NextResponse.json(
       { message: "Error interno del servidor" },
       { status: 500 },
     );
-  } finally {
-    await pool.end();
   }
 }

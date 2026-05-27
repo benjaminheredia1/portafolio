@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Alert from "./components/alert";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -10,13 +11,14 @@ export default function LoginPage() {
   const [submitting, setSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [alert, setAlert] = useState(false);
+  const router = useRouter();
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
     try {
       const response = await axios.post("/api/login", { email, password });
-      console.log(response.data);
       setSubmitting(false);
+      router.push("/proyectos");
     } catch (error) {
       console.log(error);
       setErrorMessage(

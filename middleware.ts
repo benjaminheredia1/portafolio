@@ -4,12 +4,13 @@ import { jwtVerify } from "jose";
 
 export async function middleware(request: NextRequest) {
   const cookie = request.cookies.get("token");
-  console.log(cookie);
 
   if (!cookie) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
-
+  if (request.nextUrl.pathname === "/login") {
+    return NextResponse.redirect(new URL("/proyectos", request.url));
+  }
   try {
     const secret = new TextEncoder().encode(process.env.JWT_SECRET);
 
@@ -25,5 +26,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/proyectos", "/api/proyectos/"],
+  matcher: ["/proyectos/:path*", "/api/proyectos/:path*", "/login"],
 };

@@ -10,12 +10,12 @@ export default function HomePage() {
       <nav>
         <Barra />
       </nav>
-      <main className="relative overflow-hidden flex flex-col items-center justify-center h-[35vh] px-4">
+      <main className="relative overflow-hidden flex flex-col items-center justify-center h-[100vh] px-4">
         <BackgroundRippleEffect />
         <div className="relative z-10">
           <TextGenerateEffect
             words="Welcome to My Portfolio, I'm Benjamin Heredia, a Developer Junior specializing in Full Stack Development. Explore my projects and skills as I embark on my journey in the tech world."
-            className="text-center text-white"
+            className="text-center text-white "
             filter={true}
             duration={1.4}
           />
@@ -25,7 +25,7 @@ export default function HomePage() {
       <section>
         <InfoGeneral />
       </section>
-      {/* Proyectos */ }
+      {/* Proyectos */}
       <section className="bg-black text-white w-full py-16">
         <Projects />
       </section>
