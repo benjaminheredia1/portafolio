@@ -2,6 +2,9 @@
 
 # dependencies
 /node_modules
+
+# prisma generated client (regenerated on every install/build)
+/lib/generated
 /.pnp
 .pnp.*
 .yarn/*
