@@ -4,11 +4,14 @@ import { jwtVerify } from "jose";
 
 export async function middleware(request: NextRequest) {
   const cookie = request.cookies.get("token");
+  const isLoginPage = request.nextUrl.pathname === "/login";
 
   if (!cookie) {
-    return NextResponse.redirect(new URL("/login", request.url));
+    return isLoginPage
+      ? NextResponse.next()
+      : NextResponse.redirect(new URL("/login", request.url));
   }
-  if (request.nextUrl.pathname === "/login") {
+  if (isLoginPage) {
     return NextResponse.redirect(new URL("/proyectos", request.url));
   }
   try {
@@ -17,7 +20,7 @@ export async function middleware(request: NextRequest) {
     await jwtVerify(cookie.value, secret);
 
     return NextResponse.next();
-  } catch (error) {
+  } catch {
     const response = NextResponse.redirect(new URL("/login", request.url));
     response.cookies.delete("token");
 

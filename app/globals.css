@@ -119,12 +119,19 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
   body {
     @apply bg-background text-foreground;
   }
-}
-
-/* Custom Fonts */
-.menu-texto-font {
-  font-family: 'Geist Sans', sans-serif !important;
+  ::selection {
+    background-color: oklch(0.789 0.154 211.53 / 30%); /* cyan-400/30 */
+    color: white;
+  }
 }

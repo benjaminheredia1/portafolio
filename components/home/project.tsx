@@ -1,34 +1,54 @@
-"use client"
-import Carousel from "@/components/ui/carousel";
-import { Car } from "lucide-react";
-import { s } from "motion/react-client";
-  const slideData = [
-    {
-      title: "Mystic Mountains",
-      button: "Explore Component",
-      src: "https://images.unsplash.com/photo-1494806812796-244fe51b774d?q=80&w=3534&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      title: "Urban Dreams",
-      button: "Explore Component",
-      src: "https://images.unsplash.com/photo-1518710843675-2540dd79065c?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      title: "Neon Nights",
-      button: "Explore Component",
-      src: "https://images.unsplash.com/photo-1590041794748-2d8eb73a571c?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      title: "Desert Whispers",
-      button: "Explore Component",
-      src: "https://images.unsplash.com/photo-1679420437432-80cfbf88986c?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-  ];
-export function Projects() { 
-    return(
-        <div className="bg-black mt-10 p-5 flex flex-col items-center justify-center gap-25"> 
-            <h3 className="text-4xl font-bold font-sans"> My projects</h3>
-            <Carousel slides={slideData} />
-        </div>
-    );
+import { projects, type Project } from "@/lib/content";
+import { SectionHeading } from "./section-heading";
+
+function ProjectCard({ project }: { project: Project }) {
+  return (
+    <article className="group flex flex-col rounded-2xl border border-zinc-800 bg-zinc-950/60 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-zinc-900/60">
+      <div className="flex items-baseline justify-between gap-2 font-mono text-xs text-zinc-500">
+        <span className="truncate">{project.org}</span>
+        <span className="shrink-0 text-cyan-400/70">{project.year}</span>
+      </div>
+      <h3 className="mt-3 text-lg font-semibold text-white transition-colors group-hover:text-cyan-100">
+        {project.title}
+      </h3>
+      <p className="mt-2 flex-1 text-sm leading-relaxed text-zinc-400">
+        {project.description}
+      </p>
+      <div className="mt-4 flex flex-wrap gap-2">
+        {project.tech.map((t) => (
+          <span
+            key={t}
+            className="rounded-md border border-zinc-800 bg-black/40 px-2 py-0.5 font-mono text-[11px] text-zinc-400"
+          >
+            {t}
+          </span>
+        ))}
+      </div>
+    </article>
+  );
+}
+
+export function ProjectsGrid() {
+  return (
+    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {projects.map((project) => (
+        <ProjectCard key={project.title} project={project} />
+      ))}
+    </div>
+  );
+}
+
+export function Projects() {
+  return (
+    <section id="projects" className="scroll-mt-20 bg-black px-4 py-24 sm:px-6">
+      <SectionHeading
+        eyebrow="$ ls ~/projects"
+        title="Selected work"
+        description="Systems I built or helped ship in production — real users, real constraints."
+      />
+      <div className="mx-auto mt-14 max-w-6xl">
+        <ProjectsGrid />
+      </div>
+    </section>
+  );
 }
