@@ -44,7 +44,7 @@ export function Projects() {
       <SectionHeading
         eyebrow="$ ls ~/projects"
         title="Selected work"
-        description="Systems I built or helped ship in production — real users, real constraints."
+        description="Systems I built or helped ship in production, not side-project demos."
       />
       <div className="mx-auto mt-14 max-w-6xl">
         <ProjectsGrid />

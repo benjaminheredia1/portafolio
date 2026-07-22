@@ -7,8 +7,8 @@ export function ContactSection() {
     <section id="contact" className="scroll-mt-20 bg-black px-4 pb-12 pt-24 sm:px-6">
       <SectionHeading
         eyebrow="$ ping benjamin"
-        title="Let's build something"
-        description="Open to full-stack and AI engineering roles, freelance projects and interesting collaborations."
+        title="Hiring, or got a hard problem?"
+        description="Open to full-stack and AI engineering roles, plus freelance work — reach out directly, I check this email."
       />
       <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
         <a

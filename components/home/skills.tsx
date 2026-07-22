@@ -7,7 +7,7 @@ export function SkillsSection() {
       <SectionHeading
         eyebrow="$ which --all"
         title="Stack"
-        description="Tools I use to take a system from requirements to production."
+        description="What I reach for to take a system from zero to production."
       />
       <div className="mx-auto mt-14 grid max-w-4xl gap-5 sm:grid-cols-2">
         {skillGroups.map((group) => (
