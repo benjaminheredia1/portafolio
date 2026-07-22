@@ -8,7 +8,7 @@ export const profile = {
   email: "benjaherediaruiz@gmail.com",
   github: "https://github.com/benjaminheredia1",
   tagline:
-    "I build full-stack systems and AI integrations that make it to production — hospital platforms, academic systems, and self-service bots.",
+    "Full-stack systems and AI integrations, shipped — hospital platforms, academic systems, self-service bots.",
   coreStack: [
     "Next.js",
     "NestJS",
@@ -38,7 +38,7 @@ export const experience: Experience[] = [
     period: "Feb 2026 — Jun 2026",
     location: "Santa Cruz",
     summary:
-      "Drove projects from requirements gathering to delivery, including an AI-powered self-service bot. Deployed and managed applications on AWS and Kubernetes.",
+      "Took the self-service bot from spec to production — LLM-driven conversation flow wired into n8n workflows, deployed on AWS and run on Kubernetes.",
     tech: ["NestJS", "React", "Angular", "Flutter", "n8n", "AWS", "Kubernetes"],
   },
   {
@@ -47,8 +47,9 @@ export const experience: Experience[] = [
     role: "Software Engineer Jr",
     period: "Jul 2025 — Feb 2026",
     location: "Santa Cruz",
+    // TODO: name the actual LangChain decision-support capability (e.g. what it flags/summarizes) once confirmed — sharpens this further.
     summary:
-      "Built systems that improved patient management and staff decision-making in clinical settings, with AI features integrated through APIs and LangChain.",
+      "Built the patient management platform used in day-to-day clinical operations, then layered in LangChain-based decision-support for staff.",
     tech: ["Laravel", "React", "NestJS", "n8n", "Make", "LangChain"],
   },
   {
@@ -58,7 +59,7 @@ export const experience: Experience[] = [
     period: "Jun 2024 — Jan 2026",
     location: "Santa Cruz",
     summary:
-      "Started in help desk support and moved into building academic systems from the ground up. Automated workflows with n8n and Selenium; integrated AI with LangChain and the Google SDK.",
+      "Started in help desk, moved into building UTEPSA's academic systems solo. Automated department workflows with n8n and Selenium, and added LangChain + Google SDK integrations on top.",
     tech: ["Vue", "React", "Laravel", "Python", "n8n", "Selenium"],
   },
   {
@@ -67,8 +68,9 @@ export const experience: Experience[] = [
     role: "Fullstack AI Engineer Jr",
     period: "Sep 2025 — Dec 2025",
     location: "Cochabamba",
+    // TODO: name a specific shipped product here if you can share it — strongest fix for this entry.
     summary:
-      "Owned the full software development life cycle of custom systems — requirement analysis, architecture design, and production deployment.",
+      "Took custom Next.js + Supabase products from client requirements to a deployed system, solo — architecture calls included.",
     tech: ["Next.js", "Supabase", "TypeScript"],
   },
   {
@@ -78,7 +80,7 @@ export const experience: Experience[] = [
     period: "Mar 2025 — Jul 2025",
     location: "Santa Cruz",
     summary:
-      "Handled production errors and continuous improvement on live systems: server management on Hostinger and debugging complex issues in undocumented code.",
+      "Kept production systems alive: Hostinger server management, and debugging issues in codebases with zero documentation.",
     tech: ["Laravel", "MySQL", "Hostinger"],
   },
   {
@@ -88,7 +90,7 @@ export const experience: Experience[] = [
     period: "Sep 2024 — Jun 2025",
     location: "Santa Cruz",
     summary:
-      "Shipped features and deployments for hospital systems, ERPs and academic platforms. Refactored legacy code, improving the worst segments by up to 80%.",
+      "Shipped features and deployments across hospital systems, ERPs and academic platforms — refactored the worst legacy segments for up to 80% improvement.",
     tech: ["Laravel", "React", "MySQL"],
   },
 ];
@@ -114,8 +116,9 @@ export const projects: Project[] = [
     title: "Clinical management platform",
     org: "PuntoCom Srl",
     year: "2025",
+    // TODO: same as experience[1] — name the actual decision-support capability once confirmed.
     description:
-      "Patient management and decision-support tooling for clinics, with AI features built on LangChain to assist staff workflows.",
+      "Patient management platform for clinics, with LangChain-based decision-support layered in for staff.",
     tech: ["Laravel", "React", "NestJS", "LangChain"],
   },
   {
@@ -138,8 +141,9 @@ export const projects: Project[] = [
     title: "Custom systems on Next.js + Supabase",
     org: "Boring Ventures",
     year: "2025",
+    // TODO: same as experience[3] — name a specific product if you can share it.
     description:
-      "Full-lifecycle product development: requirement analysis, architecture design and production deployment of custom systems.",
+      "Custom Next.js + Supabase products taken solo from client requirements to a deployed system — architecture decisions included.",
     tech: ["Next.js", "Supabase", "TypeScript"],
   },
   {
